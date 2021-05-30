@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+<div class="position-absolute top-50 start-50 translate-middle row">
+  {% if get_check == 'EUR' %}
+<div class="col-xs-6">
+  <form name="Pay" method="post" accept-charset="UTF-8">
+    <input name="amount" required  />
+    <input  name="description" placeholder="Description..." />
+
+
+
+  <input type="submit" value="Pay" />  </form>
+</div>
+  {% endif %}
+
+    {% if get_check == 'USD' %}
+<div class="col-xs-6">
+  <form  method="post" accept-charset="UTF-8">
+
+    <input name="amount" required placeholder="Amount..."  />
+    <input  name="description" placeholder="Description..." />
+    <input  name="account" placeholder="Account..." />
+
+  <input type="submit" value="Pay" />  </form>
+</div>
+  {% endif %}
+
+      {% if get_check == 'RUB' %}
+<div class="col-xs-6">
+  <form  method="post" accept-charset="UTF-8">
+
+    <input name="amount" required placeholder="Amount..."  />
+    <input  name="description" placeholder="Description..." />
+
+
+  <input type="submit" value="Pay" />  </form>
+</div>
+  {% endif %}
+<div class="dropdown col-xs-6">
+
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    {% if get_check != None %}
+
+    {{get_check}}
+
+    {% else %}
+
+    Choose Currency
+
+    {% endif %}
+
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+
+    <li><a class="dropdown-item" href="/?currency=USD">USD</a></li>
+    <li><a class="dropdown-item" href="/?currency=EUR">EUR</a></li>
+    <li><a class="dropdown-item" href="/?currency=RUB">RUB</a></li>
+  </ul>
+</div>
+</div>
+
+{% endblock content %}
